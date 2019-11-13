@@ -80,7 +80,13 @@ public final class PhotoEditorViewController: UIViewController {
     
     override public func viewDidLoad() {
         super.viewDidLoad()
+        print("Photo editor view did load")
         self.setImageView(image: image!)
+        
+        // When image is tapped, text input field is appearing.
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(textButtonTapped))
+        canvasImageView.isUserInteractionEnabled = true
+        canvasImageView.addGestureRecognizer(tapGesture)
         
         deleteView.layer.cornerRadius = deleteView.bounds.height / 2
         deleteView.layer.borderWidth = 2.0
